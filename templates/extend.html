@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery文本段落展开和折叠效果</title>
+<style>
+html,body,div,h2,p{margin: 0;padding: 0;}
+html{font: 1em Arial, Helvetica, sans-serif;color: #444;}
+a{color: #0087f1;}
+p{margin-bottom: 5px;}
+#container{margin: 0 auto;width: 600px;}
+#container h2{font-size: 20px;color: #0087f1;}
+#wrap{position: relative;padding: 10px;overflow: hidden;}
+#gradient{width: 100%;height: 35px;background: url() repeat-x;position: absolute;bottom: 0;left: 0;}
+#read-more{padding: 5px;border-top: 4px double #ddd;background: #fff;color: #333;}
+#read-more a{padding-right: 22px;background: url() no-repeat 100% 50%;font-weight: bold;text-decoration: none;}
+#read-more a: hover{color: #000;}
+</style>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script>
+$(function(){
+ var slideHeight = 75; // px
+ var defHeight = $('#wrap').height();
+ if(defHeight >= slideHeight){
+  $('#wrap').css('height' , slideHeight + 'px');
+  $('#read-more').append('<a href="#">点击查看更多。。</a>');
+  $('#read-more a').click(function(){
+   var curHeight = $('#wrap').height();
+   if(curHeight == slideHeight){
+    $('#wrap').animate({
+     height: defHeight
+    }, "normal");
+    $('#read-more a').html('点击隐藏');
+    $('#gradient').fadeOut();
+   }else{
+    $('#wrap').animate({
+     height: slideHeight
+    }, "normal");
+    $('#read-more a').html('点击查看更多。。');
+    $('#gradient').fadeIn();
+   }
+   return false;
+  });  
+ }
+});
+</script>
+</head>
+<body>
+ <div id="container">
+  <h1>jQuery 控制段落文字展开折叠，点击查看更多的功能</h1>
+  <h2>About Billabong</h2>
+  <div id="wrap">
+   <div>
+    <p>Gordon developed his own stitching technique, which made the garments more durable, cost effective and less labor intensive. He employed machinists, moved the operation into a factory, set up a distribution network and sponsored a team of renowned Australian surfers. The business thrived.</p>
+    <p>Since those beginnings, Billabong has expanded its product range to include boardsport products such as wetsuits, watches, surfboards, snowboard outerwear and skateboarding apparel.</p>
+   </div>
+   <div id="gradient"></div>
+  </div>
+  <div id="read-more"></div>
+ </div>
+</body>
+</html>

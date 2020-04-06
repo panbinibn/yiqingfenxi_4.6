@@ -1,0 +1,143 @@
+body{
+    margin: 0;
+    background: whitesmoke;
+	height: 90rem;
+	position: relative;
+}
+
+
+#title{
+    position: absolute;
+    width: 100%;
+    height: 6%;
+    top:0;
+    color:white;
+    font-size: 40px;
+    display: flex;
+    align-items:center;
+	background-color: #333;
+    justify-content:center;
+	/* background-color: antiquewhite; */
+}
+#tim{
+    position: absolute;
+    width: 30%;
+    height: 6%;
+    top:0;
+    right: 0%;
+    color:#666;
+    display: flex;
+	/* background-color: pink; */
+	font-size: 20px;
+}
+#center{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top:6%;
+    left: 0;
+    color: white;
+}
+#bottom{
+	position: absolute;
+	width: 98%;
+	height: 44%;
+	background-color:#DDDDDD;
+	bottom: 0;
+	left: 1%;
+}
+#b1{
+	position: absolute;
+	width: 500px;
+	height: 100%;
+	background-color:#FF6666;
+	left: 0;
+}
+#sub_title{
+	position: absolute;
+	height: 8%;
+	width: 100%;
+	left: 0;
+	top: bottom;
+	background-color: #DDDDDD;
+}
+#data{
+	position: absolute;
+	height: 92%;
+	width: 100%;
+	left: 0;
+	background-color: #DDDDDD;
+	top:8%;
+}
+#sub_area{
+	position: absolute;
+	display: flex;
+	width: 54%;
+	height: 100%;
+	top: -30%;
+	left: 0;
+	background-color: #99a4b5;
+	justify-content:center;
+	align-items:center;
+	margin-right: 1px;
+}
+#sub_confirm{
+	position: absolute;
+	display: flex;
+	width: 25%;
+	height: 100%;
+	top: -30%;
+	left: 54%;
+	background-color: #ce897e;
+	justify-content:center;
+	align-items:center;
+	margin-right: 1px;
+}
+#sub_t3{
+	position: absolute;
+	display: flex;
+	width: 17.8%;
+	height: 100%;
+	top: -30%;
+	left: 41%;
+	background-color: #FFC0CB;
+	justify-content:center;
+	align-items:center;
+	margin-right: 1px;
+}
+#sub_dead{
+	position: absolute;
+	display: flex;
+	width: 21.5%;
+	height: 100%;
+	top: -30%;
+	right: 0%;
+	background-color: #a2a8af;
+	justify-content:center;
+	align-items:center;
+	margin-right: 1px;
+}
+#sub_t5{
+	position: absolute;
+	display: flex;
+	width: 14.8%;
+	height: 100%;
+	top: -30%;
+	right: 11%;
+	background-color: #FFC0CB;
+	justify-content:center;
+	align-items:center;
+	margin-right: 1px;
+}
+#sub_t6{
+	position: absolute;
+	display: flex;
+	width: 10.8%;
+	height: 100%;
+	top: -30%;
+	right: 0;
+	background-color: #FFC0CB;
+	justify-content:center;
+	align-items:center;
+	margin-right: 1px;
+}
