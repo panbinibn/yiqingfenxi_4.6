@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>疫情可视化数据分析系统</title>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/echarts.min.js"></script>
+    <script src="../static/js/world.js"></script>
+    <link href="../static/css/hello.css" rel="stylesheet"/>
+	<style>
+		table{
+			width:500px;
+			background-color: #b4c0d5;
+			border: 1px solid blanchedalmond;
+			
+			/* 合并边框 */
+			border-collapse:collapse; 
+			text-align:center;
+			
+		}
+		table tr td {
+			border: 1px solid blanchedalmond;
+		}
+	</style>
+</head>
+<body>
+	
+
+   <div id="title">全球疫情追踪</div>
+   <div id="tim">时间</div>
+   
+   
+   <div id="center">世界地图
+    <script src="../static/js/firstpage.js"></script>
+     </div>
+	 <div id="bottom">
+		<div id="b1">
+			<div id="sub_title">
+			<p id="sub_area">地区</p>
+			<p id="sub_confirm">累计确诊</p> 
+			<!-- <p id="sub_t3">现存确诊</p> -->
+			<p id="sub_dead">死亡</p>
+			<!-- <p id="sub_t5">治愈</p>	 -->
+		<!-- 	<p id="sub_t6">疫情</p>	 -->
+		    </div> 
+			
+			<div id="data">
+				<!-- 表头 -->
+				<thead>
+				</thead>
+				<table cellpadding="10">
+					<!-- 表格主体 -->
+					<tbody id="myBody" >
+						
+					</tbody>
+				</table>
+				
+			</div>
+	    </div>
+	</div>
+   <script>
+        function get_all_data() {
+             $.ajax({
+                url:"/center",
+                success:function (data) {
+                    firstpage_option.baseOption.series[0].data=data.data;
+                    firstpage.setOption(firstpage_option)
+                },
+                error:function (xhr,type,errorThrown) {
+
+                }
+            })
+        }
+        get_all_data();
+    </script>
+	
+	<script >
+		function f(str){
+	            var sub_menu = document.getElementById(str);
+	            var dis_v = sub_menu.style.display;
+	            
+	            if(dis_v == "block")
+	                sub_menu.style.display = "none";
+	            else
+	                sub_menu.style.display = "block";
+	                
+				
+	        }
+	</script>
+	
+	<script>
+		var jsonData = [];//定义一个数组对象，数组里面可以放字符串、number、对象等类型。对象用“键值对”的格式表示
+		
+			$.ajax({
+				url:"/form",
+				data:'hello',
+				dataType: "json", 
+				contentType : "application/json",
+				type: "get",
+				success:function(data){		
+				//	$("#ni").text(data.data[0]["dead"]);
+				jsonData = data.data;//拿"出对象里的数据，数组类型
+				//console.log(jsonData);
+				var length = jsonData.length;
+				//console.log(length);
+				
+				
+				var html = ""; 
+				for(var i = 0;i<length;i++){  //给表格增加行
+					
+					html += "<tr>";
+					html += "<td>"+jsonData[i].country+"</td><td >"+jsonData[i].confirm+"</td><td>"+jsonData[i].dead+"</td>";
+					html += "</tr>";			
+					}
+					
+				//var myBody = document.getElementById("myBody");
+				//myBody.innerHtML = html;
+				//	console.log(html);
+				$('table').append(html);
+				},
+				 error:function (xhr,type,errorThrown) {
+				        }
+			})
+			
+			//将数据动态插入到表格主体
+			//var html = "<tr>" +"<td>er </td><td> sd</td><td></td><td></td>" +"</tr>";
+			
+			// var html = "";
+			// for(var i = 0;i<length;i++){
+				
+			// 	html += "<tr>";
+			// 	html += "<td></td><td></td><td></td><td></td>";
+			// 	html += "</tr>";
+				
+					
+			// 	}
+			// 	console.log(html);		
+	</script>
+	
+	<script>
+		function gettime() {
+		    $.ajax({
+		        url:"/time",
+		        timeout:10000, //超过时间设置为10秒
+		        success:function (data) {
+		            $("#tim").html(data)
+		        },
+		        error:function (xmlHttpRequest,type,errorThrow) {
+		
+		        }
+		    })
+		}
+		gettime();
+		setInterval(gettime,1000);
+	</script>
+	
+	
+		
+		
+
+</body>
+</html>

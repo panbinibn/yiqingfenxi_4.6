@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index page</title>
+    <script src="../static/js/jquery.min.js"></script>
+</head>
+<body>
+<h1>新闻数据</h1>
+<h3>H3标签</h3>
+<a href="http://www.baidu.com">点我</a>
+<button>click</button>
+<script>
+    $("button").click(function(){
+        $.ajax({
+            url:"/ajax",
+            type:"post",
+            data:{"name":"Aha","score":100},
+            success:function (d) {
+                $("h1").html("wuhan "+d)
+
+            },error:function () {
+                alert("发送ajax请求失败")
+
+        }
+        })
+    })
+</script>
+</body>
+</html>
